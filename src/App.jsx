@@ -1,4 +1,6 @@
 import Header from "./components/Header";
+import MovieCard from "./components/MovieCard";
+import { movies } from "./data/movie";
 
 function App() {
   return (
@@ -6,14 +8,24 @@ function App() {
 
       <Header />
 
-      <main className="flex min-h-[80vh] items-center justify-center">
+       <main className="mx-auto max-w-7xl px-5 py-12">
 
-        <h1 className="text-4xl font-bold text-[#d1b36b]">
-          FilmFiesta
+        <h1 className="mb-8 text-3xl font-bold text-white">
+          Movies
         </h1>
 
-      </main>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
 
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+            />
+          ))}
+
+        </div>
+
+      </main>
     </div>
   );
 }
