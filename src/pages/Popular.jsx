@@ -1,7 +1,9 @@
 import MovieCard from "../components/MovieCard";
 import { movies } from "../data/movie";
+import { useMovieSearch } from "../hooks/useMovieSearch";
 
 function Popular() {
+  const filteredMovies = useMovieSearch(movies);
 
   return (
     <main className="min-h-screen bg-[#111827] px-5 py-12">
@@ -20,16 +22,38 @@ function Popular() {
           Explore the most popular movies on FilmFiesta.
         </p>
 
-        <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {filteredMovies.length > 0 ? (
 
-          {movies.map((movie) => (
-  <MovieCard
-    key={movie.id}
-    movie={movie}
-  />
-))}
+          <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 
-        </div>
+            {filteredMovies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+              />
+            ))}
+
+          </div>
+
+        ) : (
+
+          <div className="mt-10 rounded-2xl bg-[#1f2937] p-10 text-center">
+
+            <p className="text-4xl">
+              🎬
+            </p>
+
+            <h2 className="mt-4 text-xl font-bold text-white">
+              No movies found
+            </h2>
+
+            <p className="mt-2 text-gray-400">
+              Try searching for another movie.
+            </p>
+
+          </div>
+
+        )}
 
       </div>
 

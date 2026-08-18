@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { MovieContext } from "../context/MovieContext";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
 
+  const { search, setSearch } = useContext(MovieContext);
   return (
     <header className="sticky top-0 z-50 bg-[#172033] text-white shadow-lg">
 
@@ -122,10 +124,11 @@ function Header() {
 
               <input
                 type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search movies..."
                 className="w-full bg-transparent text-white outline-none placeholder-gray-300"
               />
-
             </div>
 
           </div>
@@ -167,6 +170,8 @@ function Header() {
 
               <input
                 type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search movies..."
                 className="w-full bg-transparent text-white outline-none placeholder-gray-300"
               />

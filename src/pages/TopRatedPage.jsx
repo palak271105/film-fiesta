@@ -1,9 +1,12 @@
 import MovieCard from "../components/MovieCard";
 import { movies } from "../data/movie";
+import { useMovieSearch } from "../hooks/useMovieSearch";
 
 function TopRatedPage() {
 
-  const topRatedMovies = [...movies]
+  const filteredMovies = useMovieSearch(movies);
+
+  const topRatedMovies = [...filteredMovies]
     .filter((movie) => movie.rating >= 8)
     .sort((a, b) => b.rating - a.rating);
 
@@ -24,16 +27,38 @@ function TopRatedPage() {
           Discover the highest-rated movies loved by audiences.
         </p>
 
-        <div className="mt-10 grid w-full grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {topRatedMovies.length > 0 ? (
 
-          {topRatedMovies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-            />
-          ))}
+          <div className="mt-10 grid w-full grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 
-        </div>
+            {topRatedMovies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+              />
+            ))}
+
+          </div>
+
+        ) : (
+
+          <div className="mt-10 rounded-2xl bg-[#1f2937] p-10 text-center">
+
+            <p className="text-4xl">
+              🎬
+            </p>
+
+            <h2 className="mt-4 text-xl font-bold text-white">
+              No movies found
+            </h2>
+
+            <p className="mt-2 text-gray-400">
+              Try searching for another movie.
+            </p>
+
+          </div>
+
+        )}
 
       </div>
 

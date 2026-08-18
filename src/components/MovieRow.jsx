@@ -28,16 +28,38 @@ function MovieRow({ title, movies }) {
         </div>
 
         {/* Movies */}
-        <div className="grid w-full grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {movies.length > 0 ? (
 
-          {movies.slice(0, 5).map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-            />
-          ))}
+  <div className="grid w-full grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 
-        </div>
+    {movies.slice(0, 5).map((movie) => (
+      <MovieCard
+        key={movie.id}
+        movie={movie}
+      />
+    ))}
+
+  </div>
+
+) : (
+
+  <div className="rounded-2xl bg-[#1f2937] p-10 text-center">
+
+    <p className="text-4xl">
+      🎬
+    </p>
+
+    <h2 className="mt-4 text-xl font-bold text-white">
+      No movies found
+    </h2>
+
+    <p className="mt-2 text-gray-400">
+      We couldn't find any movie matching your search.
+    </p>
+
+  </div>
+
+)}
 
       </div>
     </section>

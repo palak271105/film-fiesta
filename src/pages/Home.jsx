@@ -8,18 +8,22 @@ import TopRated from "../components/TopRated";
 import Footer from "../components/Footer";
 
 import { movies } from "../data/movie";
+import { useMovieSearch } from "../hooks/useMovieSearch";
 
 function Home() {
-    useEffect(() => {
+  const filteredMovies = useMovieSearch(movies);
+
+  useEffect(() => {
     document.title = "FilmFiesta - Movie Recommendations";
   }, []);
+
   return (
     <>
       <Hero />
 
       <MovieRow
         title="Popular Movies"
-        movies={movies}
+        movies={filteredMovies}
       />
 
       <main className="mx-auto max-w-7xl px-5 py-12">
@@ -27,7 +31,7 @@ function Home() {
         <GenreSection />
 
         <Recommended
-          movies={movies}
+          movies={filteredMovies}
         />
 
         <TopRated />

@@ -2,6 +2,8 @@ import { createContext, useEffect, useState } from "react";
 
 export const MovieContext = createContext({
   favorites: [],
+  search: "",
+  setSearch: () => {},
   toggleFavorite: () => {},
   isFavorite: () => false,
 });
@@ -16,6 +18,8 @@ export function MovieProvider({ children }) {
       ? JSON.parse(savedFavorites)
       : [];
   });
+
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     localStorage.setItem(
@@ -50,6 +54,8 @@ export function MovieProvider({ children }) {
     <MovieContext.Provider
       value={{
         favorites,
+        search,
+        setSearch,
         toggleFavorite,
         isFavorite,
       }}
