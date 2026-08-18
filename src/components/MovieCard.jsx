@@ -1,4 +1,13 @@
+import { useContext } from "react";
+import { MovieContext } from "../context/MovieContext";
+
 function MovieCard({ movie }) {
+  const {
+    toggleFavorite,
+    isFavorite,
+  } = useContext(MovieContext);
+
+  const favorite = isFavorite(movie.id);
 
   return (
 
@@ -25,9 +34,12 @@ function MovieCard({ movie }) {
             ▶ Watch
           </button>
 
-          <button className="rounded-md bg-white px-3 py-2 text-black hover:bg-gray-200">
-            ♡
-          </button>
+          <button
+  onClick={() => toggleFavorite(movie)}
+  className="rounded-md bg-white px-3 py-2 text-black hover:bg-gray-200"
+>
+  {favorite ? "❤️" : "♡"}
+</button>
 
         </div>
 
