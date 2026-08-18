@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Hero from "../components/Hero";
 import MovieRow from "../components/MovieRow";
 import GenreSection from "../components/GenreSection";
@@ -8,6 +10,9 @@ import Footer from "../components/Footer";
 import { movies } from "../data/movie";
 
 function Home() {
+    useEffect(() => {
+    document.title = "FilmFiesta - Movie Recommendations";
+  }, []);
   return (
     <>
       <Hero />
