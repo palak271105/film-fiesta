@@ -5,6 +5,7 @@ import { movies } from "./data/movie";
 import Hero from "./components/Hero";
 import GenreSection from "./components/GenreSection";
 import Recommended from "./components/Recommended";
+import TopRated from "./components/TopRated";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <GenreSection/>
 
           <Recommended movies={movies} />
+
+          <TopRated/>
       </main>
     </div>
   );
