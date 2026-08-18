@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import { movies } from "../data/movie";
 import { useMovieSearch } from "../hooks/useMovieSearch";
@@ -5,6 +6,10 @@ import { useMovieSearch } from "../hooks/useMovieSearch";
 function TopRatedPage() {
 
   const filteredMovies = useMovieSearch(movies);
+
+    useEffect(() => {
+    document.title = "Top Rated Movies - FilmFiesta";
+   }, []);
 
   const topRatedMovies = [...filteredMovies]
     .filter((movie) => movie.rating >= 8)

@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import { movies } from "../data/movie";
 import { useMovieSearch } from "../hooks/useMovieSearch";
 
 function Popular() {
-  const filteredMovies = useMovieSearch(movies);
+    const filteredMovies = useMovieSearch(movies);
+
+    useEffect(() => {
+    document.title = "Popular Movies - FilmFiesta";
+    }, []);
 
   return (
     <main className="min-h-screen bg-[#111827] px-5 py-12">

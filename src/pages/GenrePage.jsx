@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import { movies } from "../data/movie";
 import { useMovieSearch } from "../hooks/useMovieSearch";
@@ -16,6 +17,10 @@ function GenrePage() {
 
   const genreName =
     genre.charAt(0).toUpperCase() + genre.slice(1);
+
+  useEffect(() => {
+    document.title = `${genreName} Movies - FilmFiesta`;
+  }, [genreName]);
 
   return (
     <main className="min-h-screen bg-[#111827] px-5 py-12">
