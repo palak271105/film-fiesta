@@ -2,15 +2,7 @@ import { useContext } from "react";
 import { MovieContext } from "../context/MovieContext";
 
 export function useFavorites() {
-  const {
-    favorites,
-    toggleFavorite,
-    isFavorite,
-  } = useContext(MovieContext);
+  const context = useContext(MovieContext);
 
-  return {
-    favorites,
-    toggleFavorite,
-    isFavorite,
-  };
+  return context;
 }

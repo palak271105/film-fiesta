@@ -1,16 +1,18 @@
-import { useFavorites } from "../hooks/useFavorites";
+import { useContext } from "react";
+import { MovieContext } from "../context/MovieContext";
 
 function MovieCard({ movie }) {
-  const {
-  toggleFavorite,
-  isFavorite,
-} = useFavorites();
 
-  const favorite = isFavorite(movie.id);
+  const {
+    toggleFavorite,
+    isFavorite,
+  } = useContext(MovieContext);
+
+  const liked = isFavorite(movie.id);
 
   return (
+    <div className="group min-w-0 w-full overflow-hidden rounded-xl bg-[#1f2937] shadow-lg transition duration-300 hover:-translate-y-2">
 
-      <div className="group min-w-0 w-full overflow-hidden rounded-xl bg-[#1f2937] shadow-lg transition duration-300 hover:-translate-y-2">
       <div className="relative overflow-hidden">
 
         <img
@@ -33,13 +35,14 @@ function MovieCard({ movie }) {
             ▶ Watch
           </button>
 
-          <button
-  onClick={() => toggleFavorite(movie)}
-  className="rounded-md bg-white px-3 py-2 text-black hover:bg-gray-200"
->
-  {favorite ? "❤️" : "♡"}
+         <button
+         onClick={() => toggleFavorite(movie)}
+         className={`rounded-md bg-white px-3 py-2 transition hover:bg-gray-200 ${
+         liked ? "text-red-500" : "text-black"
+         }`}
+        >
+  {liked ? "♥" : "♡"}
 </button>
-
         </div>
 
       </div>
@@ -67,7 +70,6 @@ function MovieCard({ movie }) {
       </div>
 
     </div>
-
   );
 }
 
