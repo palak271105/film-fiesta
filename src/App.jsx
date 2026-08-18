@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import MovieCard from "./components/MovieCard";
+import MovieRow from "./components/MovieRow";
 import { movies } from "./data/movie";
 import Hero from "./components/Hero";
 
@@ -11,6 +12,10 @@ function App() {
       
 
       <Hero/>
+        <MovieRow
+          title="Popular Movies"
+          movies={movies}
+          />
        <main className="mx-auto max-w-7xl px-5 py-12">
 
         <h1 className="mb-8 text-3xl font-bold text-white">
@@ -25,7 +30,6 @@ function App() {
               movie={movie}
             />
           ))}
-
         </div>
 
       </main>

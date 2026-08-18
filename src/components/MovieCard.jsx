@@ -2,8 +2,7 @@ function MovieCard({ movie }) {
 
   return (
 
-    <div className="group overflow-hidden rounded-xl bg-[#1f2937] shadow-lg transition duration-300 hover:-translate-y-2">
-
+      <div className="group min-w-0 w-full overflow-hidden rounded-xl bg-[#1f2937] shadow-lg transition duration-300 hover:-translate-y-2">
       <div className="relative overflow-hidden">
 
         <img
