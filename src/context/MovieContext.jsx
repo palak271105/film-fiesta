@@ -1,9 +1,28 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-export const MovieContext = createContext();
+export const MovieContext = createContext({
+  favorites: [],
+  toggleFavorite: () => {},
+  isFavorite: () => false,
+});
 
 export function MovieProvider({ children }) {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem(
+      "filmfiesta-favorites"
+    );
+
+    return savedFavorites
+      ? JSON.parse(savedFavorites)
+      : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "filmfiesta-favorites",
+      JSON.stringify(favorites)
+    );
+  }, [favorites]);
 
   const toggleFavorite = (movie) => {
     setFavorites((currentFavorites) => {
