@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import MovieCard from "./MovieCard";
 import { movies } from "../data/movie";
 import { useMovieSearch } from "../hooks/useMovieSearch";
@@ -5,10 +6,12 @@ import { useMovieSearch } from "../hooks/useMovieSearch";
 function TopRated() {
   const filteredMovies = useMovieSearch(movies);
 
-  const topRatedMovies = [...filteredMovies]
+  const topRatedMovies = useMemo(() => {
+  return [...filteredMovies]
     .filter((movie) => movie.rating >= 8)
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 5);
+}, [filteredMovies]);
 
   return (
     <section

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import MovieCard from "../components/MovieCard";
 import { movies } from "../data/movie";
 import { useMovieSearch } from "../hooks/useMovieSearch";
@@ -11,9 +11,12 @@ function TopRatedPage() {
     document.title = "Top Rated Movies - FilmFiesta";
    }, []);
 
-  const topRatedMovies = [...filteredMovies]
+  const topRatedMovies = useMemo(() => {
+  return [...filteredMovies]
     .filter((movie) => movie.rating >= 8)
-    .sort((a, b) => b.rating - a.rating);
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
+}, [filteredMovies]);
 
   return (
     <main className="min-h-screen bg-[#111827] px-5 py-12">
