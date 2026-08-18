@@ -101,6 +101,20 @@ function Header() {
                 </NavLink>
               </li>
 
+              <li>
+              <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+              `font-semibold transition ${
+              isActive
+              ? "text-[#d1b36b]"
+              : "text-white hover:text-[#d1b36b]"
+                }`
+               }
+               >
+    Favorites
+  </NavLink>
+</li>
             </ul>
 
           </div>
@@ -245,6 +259,18 @@ function Header() {
                 </NavLink>
               </li>
 
+              <li>
+                <NavLink
+                  to="/favorites"
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) =>isActive
+                  ? "font-semibold text-[#d1b36b]"
+                  : "text-white hover:text-[#d1b36b]"
+                    }
+                >
+               Favorites
+               </NavLink>
+              </li>
             </ul>
 
           </div>

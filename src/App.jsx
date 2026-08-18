@@ -8,7 +8,7 @@ import Popular from "./pages/Popular";
 import Upcoming from "./pages/Upcoming";
 import TopRatedPage from "./pages/TopRatedPage";
 import GenrePage from "./pages/GenrePage";
-
+import Favorites from "./pages/Favorites";
 
 function App() {
 
@@ -41,6 +41,12 @@ function App() {
         path="/genres/:genre"
         element={<GenrePage />}
         />
+        
+        <Route
+        path="/favorites"
+        element={<Favorites />}
+        />
+
       </Routes>
       
       
