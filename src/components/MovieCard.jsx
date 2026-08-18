@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { MovieContext } from "../context/MovieContext";
+import { useFavorites } from "../hooks/useFavorites";
 
 function MovieCard({ movie }) {
   const {
-    toggleFavorite,
-    isFavorite,
-  } = useContext(MovieContext);
+  toggleFavorite,
+  isFavorite,
+} = useFavorites();
 
   const favorite = isFavorite(movie.id);
 
