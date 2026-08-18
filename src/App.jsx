@@ -4,6 +4,7 @@ import MovieRow from "./components/MovieRow";
 import { movies } from "./data/movie";
 import Hero from "./components/Hero";
 import GenreSection from "./components/GenreSection";
+import Recommended from "./components/Recommended";
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
         </div>
 
           <GenreSection/>
+
+          <Recommended movies={movies} />
       </main>
     </div>
   );
