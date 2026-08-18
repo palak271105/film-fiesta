@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Popular from "./pages/Popular";
 import Upcoming from "./pages/Upcoming";
 import TopRatedPage from "./pages/TopRatedPage";
-
+import GenrePage from "./pages/GenrePage";
 
 
 function App() {
@@ -37,8 +37,12 @@ function App() {
           element={<Upcoming />}
           />
           
+        <Route
+        path="/genres/:genre"
+        element={<GenrePage />}
+        />
       </Routes>
-
+      
       
 
     </div>

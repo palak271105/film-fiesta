@@ -3,38 +3,34 @@ import MovieRow from "../components/MovieRow";
 import GenreSection from "../components/GenreSection";
 import Recommended from "../components/Recommended";
 import TopRated from "../components/TopRated";
+import Footer from "../components/Footer";
+
 import { movies } from "../data/movie";
 
 function Home() {
-
   return (
-    <main>
-
-      {/* Hero */}
+    <>
       <Hero />
 
-
-      {/* Popular Movies */}
       <MovieRow
         title="Popular Movies"
         movies={movies}
       />
 
+      <main className="mx-auto max-w-7xl px-5 py-12">
 
-      {/* Genres */}
-      <GenreSection />
+        <GenreSection />
 
+        <Recommended
+          movies={movies}
+        />
 
-      {/* Recommended */}
-      <Recommended
-        movies={movies}
-      />
+        <TopRated />
 
+      </main>
 
-      {/* Top Rated */}
-      <TopRated />
-
-    </main>
+      <Footer />
+    </>
   );
 }
 
