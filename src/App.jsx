@@ -3,6 +3,7 @@ import MovieCard from "./components/MovieCard";
 import MovieRow from "./components/MovieRow";
 import { movies } from "./data/movie";
 import Hero from "./components/Hero";
+import GenreSection from "./components/GenreSection";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           ))}
         </div>
 
+          <GenreSection/>
       </main>
     </div>
   );
