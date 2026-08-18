@@ -1,5 +1,9 @@
-import { createContext, useEffect, useState } from "react";
-
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 export const MovieContext = createContext({
   favorites: [],
   search: "",
@@ -28,27 +32,30 @@ export function MovieProvider({ children }) {
     );
   }, [favorites]);
 
-  const toggleFavorite = (movie) => {
-    setFavorites((currentFavorites) => {
-      const alreadyFavorite = currentFavorites.some(
-        (item) => item.id === movie.id
+const toggleFavorite = useCallback((movie) => {
+  setFavorites((currentFavorites) => {
+    const alreadyFavorite = currentFavorites.some(
+      (item) => item.id === movie.id
+    );
+
+    if (alreadyFavorite) {
+      return currentFavorites.filter(
+        (item) => item.id !== movie.id
       );
+    }
 
-      if (alreadyFavorite) {
-        return currentFavorites.filter(
-          (item) => item.id !== movie.id
-        );
-      }
+    return [...currentFavorites, movie];
+  });
+}, []);
 
-      return [...currentFavorites, movie];
-    });
-  };
-
-  const isFavorite = (movieId) => {
+  const isFavorite = useCallback(
+  (movieId) => {
     return favorites.some(
       (movie) => movie.id === movieId
     );
-  };
+  },
+  [favorites]
+);
 
   return (
     <MovieContext.Provider

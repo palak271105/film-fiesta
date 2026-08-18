@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-
+import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Popular from "./pages/Popular";
@@ -11,45 +11,50 @@ import GenrePage from "./pages/GenrePage";
 import Favorites from "./pages/Favorites";
 
 function App() {
-
   return (
-    <div className="min-h-screen bg-[#111827]">
+    <div className="flex min-h-screen flex-col bg-[#111827]">
 
       <Header />
 
-      <Routes>
+      <main className="flex-1">
 
-        <Route
-          path="/"
-          element={<Home />}
-        />
+        <Routes>
 
-        <Route
-          path="/popular"
-          element={<Popular />}
-        />
-        <Route
-        path="/top-rated"
-        element={<TopRatedPage />}
-        />
-        <Route
-          path="/upcoming"
-          element={<Upcoming />}
+          <Route
+            path="/"
+            element={<Home />}
           />
-          
-        <Route
-        path="/genres/:genre"
-        element={<GenrePage />}
-        />
-        
-        <Route
-        path="/favorites"
-        element={<Favorites />}
-        />
 
-      </Routes>
-      
-      
+          <Route
+            path="/popular"
+            element={<Popular />}
+          />
+
+          <Route
+            path="/top-rated"
+            element={<TopRatedPage />}
+          />
+
+          <Route
+            path="/upcoming"
+            element={<Upcoming />}
+          />
+
+          <Route
+            path="/genres/:genre"
+            element={<GenrePage />}
+          />
+
+          <Route
+            path="/favorites"
+            element={<Favorites />}
+          />
+
+        </Routes>
+
+      </main>
+
+      <Footer />
 
     </div>
   );
