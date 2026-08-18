@@ -1,9 +1,12 @@
-import { useState, useContext } from "react";
+import { useRef, useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { MovieContext } from "../context/MovieContext";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
+
+    const searchInputRef = useRef(null);
+    const mobileSearchInputRef = useRef(null);
 
   const { search, setSearch } = useContext(MovieContext);
   return (
@@ -132,11 +135,14 @@ function Header() {
 
 
             {/* Search */}
-            <div className="flex h-10 w-56 items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3">
-
+            <div
+            onClick={() => searchInputRef.current?.focus()}
+            className="flex h-10 w-56 cursor-text items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3"
+            >
               <span>🔍</span>
 
               <input
+                ref={searchInputRef}
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -178,16 +184,19 @@ function Header() {
           <div className="mt-5 border-t border-slate-700 pt-5 md:hidden">
 
             {/* Mobile Search */}
-            <div className="mb-5 flex h-11 items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3">
-
+            <div
+            onClick={() => mobileSearchInputRef.current?.focus()}
+            className="mb-5 flex h-11 cursor-text items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3"
+            >
               <span>🔍</span>
 
               <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search movies..."
-                className="w-full bg-transparent text-white outline-none placeholder-gray-300"
+              ref={mobileSearchInputRef}
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search movies..."
+              className="w-full bg-transparent text-white outline-none placeholder-gray-300"
               />
 
             </div>
