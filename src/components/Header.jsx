@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
@@ -11,11 +12,11 @@ function Header() {
         <div className="flex items-center justify-between">
 
           {/* Logo */}
-          <a
-            href="/"
+          <NavLink
+            to="/"
             className="flex items-center gap-2"
+            onClick={() => setShowMenu(false)}
           >
-
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#d1b36b] font-bold text-[#172033]">
               F
             </div>
@@ -23,63 +24,98 @@ function Header() {
             <span className="text-2xl font-bold text-[#d1b36b]">
               FilmFiesta
             </span>
+          </NavLink>
 
-          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
 
             <ul className="flex items-center gap-8">
 
+              {/* Home */}
               <li>
-                <a
-                  href="#home"
-                  className="font-semibold text-[#d1b36b] transition hover:text-white"
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `font-semibold transition ${
+                      isActive
+                        ? "text-[#d1b36b]"
+                        : "text-white hover:text-[#d1b36b]"
+                    }`
+                  }
                 >
                   Home
-                </a>
+                </NavLink>
               </li>
 
+
+              {/* Popular */}
               <li>
-                <a
-                  href="#popular"
-                  className="font-semibold transition hover:text-[#d1b36b]"
+                <NavLink
+                  to="/popular"
+                  className={({ isActive }) =>
+                    `font-semibold transition ${
+                      isActive
+                        ? "text-[#d1b36b]"
+                        : "text-white hover:text-[#d1b36b]"
+                    }`
+                  }
                 >
                   Popular
-                </a>
+                </NavLink>
               </li>
 
+
+              {/* Top Rated */}
               <li>
-                <a
-                  href="#top-rated"
-                  className="font-semibold transition hover:text-[#d1b36b]"
+                <NavLink
+                  to="/top-rated"
+                  className={({ isActive }) =>
+                    `font-semibold transition ${
+                      isActive
+                        ? "text-[#d1b36b]"
+                        : "text-white hover:text-[#d1b36b]"
+                    }`
+                  }
                 >
                   Top Rated
-                </a>
+                </NavLink>
               </li>
 
+
+              {/* Upcoming */}
               <li>
-                <a
-                  href="#upcoming"
-                  className="font-semibold transition hover:text-[#d1b36b]"
+                <NavLink
+                  to="/upcoming"
+                  className={({ isActive }) =>
+                    `font-semibold transition ${
+                      isActive
+                        ? "text-[#d1b36b]"
+                        : "text-white hover:text-[#d1b36b]"
+                    }`
+                  }
                 >
                   Upcoming
-                </a>
+                </NavLink>
               </li>
 
             </ul>
 
           </div>
 
+
           {/* Desktop Right */}
           <div className="hidden items-center gap-3 md:flex">
 
+            {/* Theme Button */}
             <button
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#b89236] transition hover:bg-[#d1b36b] hover:text-white"
             >
               ☀
             </button>
 
+
+            {/* Search */}
             <div className="flex h-10 w-56 items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3">
 
               <span>🔍</span>
@@ -94,15 +130,19 @@ function Header() {
 
           </div>
 
-          {/* Mobile */}
+
+          {/* Mobile Right */}
           <div className="flex items-center gap-2 md:hidden">
 
+            {/* Theme Button */}
             <button
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#b89236]"
             >
               ☀
             </button>
 
+
+            {/* Menu Button */}
             <button
               onClick={() => setShowMenu(!showMenu)}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-500"
@@ -114,10 +154,13 @@ function Header() {
 
         </div>
 
+
         {/* Mobile Menu */}
         {showMenu && (
+
           <div className="mt-5 border-t border-slate-700 pt-5 md:hidden">
 
+            {/* Mobile Search */}
             <div className="mb-5 flex h-11 items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3">
 
               <span>🔍</span>
@@ -130,27 +173,77 @@ function Header() {
 
             </div>
 
+
+            {/* Mobile Navigation */}
             <ul className="flex flex-col gap-4 text-center">
 
+              {/* Home */}
               <li>
-                <a href="#home">Home</a>
+                <NavLink
+                  to="/"
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-[#d1b36b]"
+                      : "text-white hover:text-[#d1b36b]"
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
 
+
+              {/* Popular */}
               <li>
-                <a href="#popular">Popular</a>
+                <NavLink
+                  to="/popular"
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-[#d1b36b]"
+                      : "text-white hover:text-[#d1b36b]"
+                  }
+                >
+                  Popular
+                </NavLink>
               </li>
 
+
+              {/* Top Rated */}
               <li>
-                <a href="#top-rated">Top Rated</a>
+                <NavLink
+                  to="/top-rated"
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-[#d1b36b]"
+                      : "text-white hover:text-[#d1b36b]"
+                  }
+                >
+                  Top Rated
+                </NavLink>
               </li>
 
+
+              {/* Upcoming */}
               <li>
-                <a href="#upcoming">Upcoming</a>
+                <NavLink
+                  to="/upcoming"
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-[#d1b36b]"
+                      : "text-white hover:text-[#d1b36b]"
+                  }
+                >
+                  Upcoming
+                </NavLink>
               </li>
 
             </ul>
 
           </div>
+
         )}
 
       </nav>
