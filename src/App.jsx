@@ -1,39 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import MovieRow from "./components/MovieRow";
-import GenreSection from "./components/GenreSection";
-import Recommended from "./components/Recommended";
-import TopRated from "./components/TopRated";
 
-import { movies } from "./data/movie";
 
+import Home from "./pages/Home";
 import Popular from "./pages/Popular";
+import Upcoming from "./pages/Upcoming";
+import TopRatedPage from "./pages/TopRatedPage";
 
-function Home() {
 
-  return (
-    <>
-      <Hero />
-
-      <MovieRow
-        title="Popular Movies"
-        movies={movies}
-      />
-
-      <main className="mx-auto max-w-7xl px-5 py-12">
-
-        <GenreSection />
-
-        <Recommended movies={movies} />
-
-        <TopRated />
-
-      </main>
-    </>
-  );
-}
 
 function App() {
 
@@ -53,8 +28,18 @@ function App() {
           path="/popular"
           element={<Popular />}
         />
-
+        <Route
+        path="/top-rated"
+        element={<TopRatedPage />}
+        />
+        <Route
+          path="/upcoming"
+          element={<Upcoming />}
+          />
+          
       </Routes>
+
+      
 
     </div>
   );
