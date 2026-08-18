@@ -1,12 +1,15 @@
 import MovieCard from "../components/MovieCard";
 import { movies } from "../data/movie";
+import { useMovieSearch } from "../hooks/useMovieSearch";
 import { useParams } from "react-router-dom";
 
 function GenrePage() {
 
   const { genre } = useParams();
 
-  const genreMovies = movies.filter(
+  const searchMovies = useMovieSearch(movies);
+
+  const genreMovies = searchMovies.filter(
     (movie) =>
       movie.genre.toLowerCase() === genre.toLowerCase()
   );
@@ -57,7 +60,7 @@ function GenrePage() {
             </h2>
 
             <p className="mt-2 text-gray-400">
-              We couldn't find movies in this genre yet.
+              We couldn't find any movie matching your search.
             </p>
 
           </div>
