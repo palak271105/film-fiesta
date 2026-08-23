@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -10,9 +11,19 @@ import TopRatedPage from "./pages/TopRatedPage";
 import GenrePage from "./pages/GenrePage";
 import Favorites from "./pages/Favorites";
 
+import { MovieContext } from "./context/MovieContext";
+
 function App() {
+  const { darkMode } = useContext(MovieContext);
+
   return (
-    <div className="flex min-h-screen flex-col bg-[#111827]">
+    <div
+      className={`flex min-h-screen flex-col ${
+        darkMode
+          ? "bg-[#111827] text-white"
+          : "bg-white text-[#172033]"
+      }`}
+    >
 
       <Header />
 

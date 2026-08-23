@@ -21,8 +21,11 @@ function MovieCard({ movie }) {
           className="h-72 w-full object-cover transition duration-500 group-hover:scale-105"
         />
 
-        <div className="absolute right-3 top-3 rounded-md bg-black/80 px-2 py-1 text-sm text-white">
-          ⭐ {movie.rating}
+        <div className="rating-badge absolute right-3 top-3 rounded-md bg-black/70 px-2 py-1 text-sm ">
+         <span className="star">⭐</span>
+  <span className="font-semibold">
+    {movie.rating}
+  </span>
         </div>
 
         <div className="absolute left-3 top-3 rounded-md bg-[#b89236] px-2 py-1 text-xs font-semibold text-white">

@@ -9,4 +9,150 @@ body {
   background: #111827;
   color: white;
   font-family: Arial, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* =========================================
+   LIGHT MODE
+   ========================================= */
+
+body.light-mode {
+  background: #f8fafc;
+  color: #172033;
+}
+
+/* Main dark backgrounds */
+body.light-mode [class*="bg-[#111827]"] {
+  background-color: #f8fafc !important;
+}
+
+body.light-mode [class*="bg-[#172033]"] {
+  background-color: #ffffff !important;
+}
+
+body.light-mode [class*="bg-[#1f2937]"] {
+  background-color: #e2e8f0 !important;
+}
+
+body.light-mode [class*="bg-[#263449]"] {
+  background-color: #cbd5e1 !important;
+}
+
+/* White text becomes dark in light mode */
+body.light-mode .text-white {
+  color: #172033 !important;
+}
+
+/* Black text */
+body.light-mode .text-black {
+  color: #172033 !important;
+}
+
+/* Dark gray text */
+body.light-mode .text-gray-900,
+body.light-mode .text-slate-900 {
+  color: #172033 !important;
+}
+
+/* Gray text */
+body.light-mode .text-gray-400 {
+  color: #475569 !important;
+}
+
+body.light-mode .text-gray-500 {
+  color: #64748b !important;
+}
+
+body.light-mode .text-gray-600 {
+  color: #475569 !important;
+}
+
+/* Slate text */
+body.light-mode .text-slate-300 {
+  color: #475569 !important;
+}
+
+body.light-mode .text-slate-400 {
+  color: #475569 !important;
+}
+
+body.light-mode .text-slate-500 {
+  color: #475569 !important;
+}
+
+/* Borders */
+body.light-mode .border-slate-700 {
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode .border-slate-600 {
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode .border-slate-500 {
+  border-color: #94a3b8 !important;
+}
+
+/* Search boxes */
+body.light-mode .bg-slate-600\/70 {
+  background-color: #e2e8f0 !important;
+}
+
+body.light-mode .bg-slate-700 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Placeholder */
+body.light-mode .placeholder-gray-300::placeholder {
+  color: #64748b !important;
+}
+
+/* Input text */
+body.light-mode input {
+  color: #172033;
+}
+
+/* Select */
+body.light-mode select {
+  color: #172033;
+  background-color: #ffffff;
+}
+
+/* =========================================
+   RATING
+   ========================================= */
+
+body.light-mode .text-yellow-400 {
+  color: #d97706 !important;
+}
+
+body.light-mode .text-yellow-500 {
+  color: #d97706 !important;
+}
+
+/* Movie rating badge - always visible */
+.rating-badge,
+.rating-badge * {
+  color: white !important;
+}
+
+.rating-badge .star {
+  color: #facc15 !important;
+}
+/* =========================================
+   SMOOTH THEME TRANSITION
+   ========================================= */
+
+body,
+header,
+main,
+footer,
+section,
+div {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }

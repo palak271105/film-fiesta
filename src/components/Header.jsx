@@ -1,14 +1,26 @@
-import { useRef, useState, useContext } from "react";
+import {
+  useRef,
+  useState,
+  useContext,
+} from "react";
+
 import { NavLink } from "react-router-dom";
+
 import { MovieContext } from "../context/MovieContext";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
 
-    const searchInputRef = useRef(null);
-    const mobileSearchInputRef = useRef(null);
+  const searchInputRef = useRef(null);
+  const mobileSearchInputRef = useRef(null);
 
-  const { search, setSearch } = useContext(MovieContext);
+  const {
+    search,
+    setSearch,
+    darkMode,
+    toggleDarkMode,
+  } = useContext(MovieContext);
+
   return (
     <header className="sticky top-0 z-50 bg-[#172033] text-white shadow-lg">
 
@@ -31,13 +43,11 @@ function Header() {
             </span>
           </NavLink>
 
-
           {/* Desktop Navigation */}
           <div className="hidden md:block">
 
             <ul className="flex items-center gap-8">
 
-              {/* Home */}
               <li>
                 <NavLink
                   to="/"
@@ -53,8 +63,6 @@ function Header() {
                 </NavLink>
               </li>
 
-
-              {/* Popular */}
               <li>
                 <NavLink
                   to="/popular"
@@ -70,8 +78,6 @@ function Header() {
                 </NavLink>
               </li>
 
-
-              {/* Top Rated */}
               <li>
                 <NavLink
                   to="/top-rated"
@@ -87,8 +93,6 @@ function Header() {
                 </NavLink>
               </li>
 
-
-              {/* Upcoming */}
               <li>
                 <NavLink
                   to="/upcoming"
@@ -105,39 +109,47 @@ function Header() {
               </li>
 
               <li>
-              <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-              `font-semibold transition ${
-              isActive
-              ? "text-[#d1b36b]"
-              : "text-white hover:text-[#d1b36b]"
-                }`
-               }
-               >
-    Favorites
-  </NavLink>
-</li>
+                <NavLink
+                  to="/favorites"
+                  className={({ isActive }) =>
+                    `font-semibold transition ${
+                      isActive
+                        ? "text-[#d1b36b]"
+                        : "text-white hover:text-[#d1b36b]"
+                    }`
+                  }
+                >
+                  Favorites
+                </NavLink>
+              </li>
+
             </ul>
 
           </div>
 
-
           {/* Desktop Right */}
           <div className="hidden items-center gap-3 md:flex">
 
-            {/* Theme Button */}
+            {/* Theme Toggle */}
             <button
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#b89236] transition hover:bg-[#d1b36b] hover:text-white"
+              onClick={toggleDarkMode}
+              aria-label="Toggle dark mode"
+              title={
+                darkMode
+                  ? "Switch to Light Mode"
+                  : "Switch to Dark Mode"
+              }
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#b89236] text-lg transition hover:bg-[#d1b36b] hover:text-white"
             >
-              ☀
+              {darkMode ? "☀️" : "🌙"}
             </button>
-
 
             {/* Search */}
             <div
-            onClick={() => searchInputRef.current?.focus()}
-            className="flex h-10 w-56 cursor-text items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3"
+              onClick={() =>
+                searchInputRef.current?.focus()
+              }
+              className="flex h-10 w-56 cursor-text items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3"
             >
               <span>🔍</span>
 
@@ -145,7 +157,9 @@ function Header() {
                 ref={searchInputRef}
                 type="text"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) =>
+                  setSearch(e.target.value)
+                }
                 placeholder="Search movies..."
                 className="w-full bg-transparent text-white outline-none placeholder-gray-300"
               />
@@ -153,21 +167,28 @@ function Header() {
 
           </div>
 
-
           {/* Mobile Right */}
           <div className="flex items-center gap-2 md:hidden">
 
-            {/* Theme Button */}
+            {/* Theme Toggle */}
             <button
+              onClick={toggleDarkMode}
+              aria-label="Toggle dark mode"
+              title={
+                darkMode
+                  ? "Switch to Light Mode"
+                  : "Switch to Dark Mode"
+              }
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#b89236]"
             >
-              ☀
+              {darkMode ? "☀️" : "🌙"}
             </button>
 
-
-            {/* Menu Button */}
+            {/* Menu */}
             <button
-              onClick={() => setShowMenu(!showMenu)}
+              onClick={() =>
+                setShowMenu(!showMenu)
+              }
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-500"
             >
               {showMenu ? "✕" : "☰"}
@@ -177,7 +198,6 @@ function Header() {
 
         </div>
 
-
         {/* Mobile Menu */}
         {showMenu && (
 
@@ -185,27 +205,29 @@ function Header() {
 
             {/* Mobile Search */}
             <div
-            onClick={() => mobileSearchInputRef.current?.focus()}
-            className="mb-5 flex h-11 cursor-text items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3"
+              onClick={() =>
+                mobileSearchInputRef.current?.focus()
+              }
+              className="mb-5 flex h-11 cursor-text items-center gap-2 rounded-lg border border-slate-500 bg-slate-600/70 px-3"
             >
               <span>🔍</span>
 
               <input
-              ref={mobileSearchInputRef}
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search movies..."
-              className="w-full bg-transparent text-white outline-none placeholder-gray-300"
+                ref={mobileSearchInputRef}
+                type="text"
+                value={search}
+                onChange={(e) =>
+                  setSearch(e.target.value)
+                }
+                placeholder="Search movies..."
+                className="w-full bg-transparent text-white outline-none placeholder-gray-300"
               />
 
             </div>
 
-
             {/* Mobile Navigation */}
             <ul className="flex flex-col gap-4 text-center">
 
-              {/* Home */}
               <li>
                 <NavLink
                   to="/"
@@ -220,8 +242,6 @@ function Header() {
                 </NavLink>
               </li>
 
-
-              {/* Popular */}
               <li>
                 <NavLink
                   to="/popular"
@@ -236,8 +256,6 @@ function Header() {
                 </NavLink>
               </li>
 
-
-              {/* Top Rated */}
               <li>
                 <NavLink
                   to="/top-rated"
@@ -252,8 +270,6 @@ function Header() {
                 </NavLink>
               </li>
 
-
-              {/* Upcoming */}
               <li>
                 <NavLink
                   to="/upcoming"
@@ -272,14 +288,16 @@ function Header() {
                 <NavLink
                   to="/favorites"
                   onClick={() => setShowMenu(false)}
-                  className={({ isActive }) =>isActive
-                  ? "font-semibold text-[#d1b36b]"
-                  : "text-white hover:text-[#d1b36b]"
-                    }
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-[#d1b36b]"
+                      : "text-white hover:text-[#d1b36b]"
+                  }
                 >
-               Favorites
-               </NavLink>
+                  Favorites
+                </NavLink>
               </li>
+
             </ul>
 
           </div>
