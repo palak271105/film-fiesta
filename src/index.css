@@ -40,9 +40,23 @@ body.light-mode [class*="bg-[#263449]"] {
   background-color: #cbd5e1 !important;
 }
 
+/* =========================================
+   HERO OVERLAY
+   ========================================= */
+
+/* Keep the cinema image visible in light mode */
+body.light-mode .hero-overlay {
+  background-color: rgb(17 24 39 / 0.55) !important;
+}
+
 /* White text becomes dark in light mode */
 body.light-mode .text-white {
   color: #172033 !important;
+}
+
+/* Keep Hero heading white */
+body.light-mode #home .text-white {
+  color: white !important;
 }
 
 /* Black text */
@@ -82,7 +96,10 @@ body.light-mode .text-slate-500 {
   color: #475569 !important;
 }
 
-/* Borders */
+/* =========================================
+   BORDERS
+   ========================================= */
+
 body.light-mode .border-slate-700 {
   border-color: #cbd5e1 !important;
 }
@@ -95,7 +112,10 @@ body.light-mode .border-slate-500 {
   border-color: #94a3b8 !important;
 }
 
-/* Search boxes */
+/* =========================================
+   SEARCH BOXES
+   ========================================= */
+
 body.light-mode .bg-slate-600\/70 {
   background-color: #e2e8f0 !important;
 }
@@ -104,17 +124,26 @@ body.light-mode .bg-slate-700 {
   background-color: #e2e8f0 !important;
 }
 
-/* Placeholder */
+/* =========================================
+   PLACEHOLDER
+   ========================================= */
+
 body.light-mode .placeholder-gray-300::placeholder {
   color: #64748b !important;
 }
 
-/* Input text */
+/* =========================================
+   INPUT
+   ========================================= */
+
 body.light-mode input {
   color: #172033;
 }
 
-/* Select */
+/* =========================================
+   SELECT
+   ========================================= */
+
 body.light-mode select {
   color: #172033;
   background-color: #ffffff;
@@ -141,6 +170,7 @@ body.light-mode .text-yellow-500 {
 .rating-badge .star {
   color: #facc15 !important;
 }
+
 /* =========================================
    SMOOTH THEME TRANSITION
    ========================================= */

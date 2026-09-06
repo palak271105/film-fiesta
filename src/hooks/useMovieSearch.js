@@ -1,25 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useMemo } from "react";
 import { MovieContext } from "../context/MovieContext";
 
 export function useMovieSearch(movies) {
   const { search } = useContext(MovieContext);
 
-  const [filteredMovies, setFilteredMovies] = useState(movies);
-
-  useEffect(() => {
+  const filteredMovies = useMemo(() => {
     const searchValue = search.trim().toLowerCase();
 
     if (!searchValue) {
-      setFilteredMovies(movies);
-      return;
+      return movies;
     }
 
-    const results = movies.filter((movie) =>
+    return movies.filter((movie) =>
       movie.title.toLowerCase().includes(searchValue)
     );
-
-    setFilteredMovies(results);
-  }, [search, movies]);
+  }, [movies, search]);
 
   return filteredMovies;
 }

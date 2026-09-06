@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import {useContext, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
-import { movies } from "../data/movie";
+import { MovieContext } from "../context/MovieContext";
 import { useMovieSearch } from "../hooks/useMovieSearch";
 
 function Popular() {
+    const { movies } = useContext(MovieContext);
+
     const filteredMovies = useMovieSearch(movies);
 
     useEffect(() => {

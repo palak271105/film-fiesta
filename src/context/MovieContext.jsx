@@ -6,6 +6,7 @@ import {
 } from "react";
 
 export const MovieContext = createContext({
+  movies: [],
   favorites: [],
   search: "",
   setSearch: () => {},
@@ -13,9 +14,45 @@ export const MovieContext = createContext({
   isFavorite: () => false,
   darkMode: true,
   toggleDarkMode: () => {},
+  loading: true,
+  error: "",
 });
 
 export function MovieProvider({ children }) {
+  // Movies from REST API
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  // Fetch movies from backend API
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setLoading(true);
+
+        const response = await fetch(
+          "http://localhost:5000/api/movies"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch movies");
+        }
+
+        const data = await response.json();
+
+        setMovies(data);
+        setError("");
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+        setError("Unable to load movies");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
   // Favorites
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem(
@@ -97,6 +134,7 @@ export function MovieProvider({ children }) {
   return (
     <MovieContext.Provider
       value={{
+        movies,
         favorites,
         search,
         setSearch,
@@ -104,6 +142,8 @@ export function MovieProvider({ children }) {
         isFavorite,
         darkMode,
         toggleDarkMode,
+        loading,
+        error,
       }}
     >
       {children}

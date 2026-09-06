@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import Hero from "../components/Hero";
 import MovieRow from "../components/MovieRow";
@@ -7,10 +7,12 @@ import Recommended from "../components/Recommended";
 import TopRated from "../components/TopRated";
 import Footer from "../components/Footer";
 
-import { movies } from "../data/movie";
+import { MovieContext } from "../context/MovieContext";
 import { useMovieSearch } from "../hooks/useMovieSearch";
 
 function Home() {
+    const { movies } = useContext(MovieContext);
+
   const filteredMovies = useMovieSearch(movies);
 
   useEffect(() => {

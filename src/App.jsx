@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Popular from "./pages/Popular";
@@ -10,6 +9,7 @@ import Upcoming from "./pages/Upcoming";
 import TopRatedPage from "./pages/TopRatedPage";
 import GenrePage from "./pages/GenrePage";
 import Favorites from "./pages/Favorites";
+import MovieDetails from "./pages/MovieDetails";
 
 import { MovieContext } from "./context/MovieContext";
 
@@ -61,11 +61,11 @@ function App() {
             element={<Favorites />}
           />
 
+          <Route path="/movie/:id" element={<MovieDetails />} />
         </Routes>
 
       </main>
 
-      <Footer />
 
     </div>
   );

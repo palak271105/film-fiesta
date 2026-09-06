@@ -1,9 +1,11 @@
-import { useEffect, useMemo } from "react";
+import {useContext, useEffect, useMemo } from "react";
 import MovieCard from "../components/MovieCard";
-import { movies } from "../data/movie";
+import { MovieContext } from "../context/MovieContext";
 import { useMovieSearch } from "../hooks/useMovieSearch";
 
 function TopRatedPage() {
+
+    const { movies } = useContext(MovieContext);
 
   const filteredMovies = useMovieSearch(movies);
 

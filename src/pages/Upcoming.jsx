@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
-import { upcomingMovies } from "../data/movie";
 import { useMovieSearch } from "../hooks/useMovieSearch";
-
+import { MovieContext } from "../context/MovieContext";
 function Upcoming() {
+const { movies } = useContext(MovieContext);
+
+  const upcomingMovies = movies.filter(
+    (movie) => movie.type === "upcoming"
+  );
 
   const filteredMovies = useMovieSearch(upcomingMovies);
 

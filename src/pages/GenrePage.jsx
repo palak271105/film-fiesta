@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useContext,useEffect } from "react";
 import MovieCard from "../components/MovieCard";
-import { movies } from "../data/movie";
-import { useMovieSearch } from "../hooks/useMovieSearch";
+import { MovieContext } from "../context/MovieContext";import { useMovieSearch } from "../hooks/useMovieSearch";
 import { useParams } from "react-router-dom";
 
 function GenrePage() {
 
   const { genre } = useParams();
+
+  const { movies } = useContext(MovieContext);
 
   const searchMovies = useMovieSearch(movies);
 
