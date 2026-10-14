@@ -116,62 +116,62 @@ const movies = [
     type: "movie",
   },
 
-  // Upcoming Movies
-  {
-    id: 101,
-    title: "Avengers: Doomsday",
-    image:
-      "https://image.tmdb.org/t/p/w500/6dC5fYlQ6dKq8sYxH9GQ7M9hY5G.jpg",
-    rating: 0,
-    genre: "Action",
-    year: 2026,
-    language: "English",
-    type: "upcoming",
-  },
-  {
-    id: 102,
-    title: "Spider-Man: Brand New Day",
-    image:
-      "https://image.tmdb.org/t/p/w500/2vYv8K7H4JqJ3K9L0Q5R6S7T8U9.jpg",
-    rating: 0,
-    genre: "Action",
-    year: 2026,
-    language: "English",
-    type: "upcoming",
-  },
-  {
-    id: 103,
-    title: "Toy Story 5",
-    image:
-      "https://image.tmdb.org/t/p/w500/4rQ5L0mZ3X2V1N8B7C6D9E0F5G.jpg",
-    rating: 0,
-    genre: "Animation",
-    year: 2026,
-    language: "English",
-    type: "upcoming",
-  },
-  {
-    id: 104,
-    title: "The Batman Part II",
-    image:
-      "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
-    rating: 0,
-    genre: "Action",
-    year: 2027,
-    language: "English",
-    type: "upcoming",
-  },
-  {
-    id: 105,
-    title: "Avatar 4",
-    image:
-      "https://image.tmdb.org/t/p/w500/6b8jW7mQ9X5L3K2P1N4R8T0V6Y.jpg",
-    rating: 0,
-    genre: "Adventure",
-    year: 2029,
-    language: "English",
-    type: "upcoming",
-  },
+  // // Upcoming Movies
+  // {
+  //   id: 101,
+  //   title: "Avengers: Doomsday",
+  //   image:
+  //     "https://image.tmdb.org/t/p/w500/6dC5fYlQ6dKq8sYxH9GQ7M9hY5G.jpg",
+  //   rating: 0,
+  //   genre: "Action",
+  //   year: 2026,
+  //   language: "English",
+  //   type: "upcoming",
+  // },
+  // {
+  //   id: 102,
+  //   title: "Spider-Man: Brand New Day",
+  //   image:
+  //     "https://image.tmdb.org/t/p/w500/2vYv8K7H4JqJ3K9L0Q5R6S7T8U9.jpg",
+  //   rating: 0,
+  //   genre: "Action",
+  //   year: 2026,
+  //   language: "English",
+  //   type: "upcoming",
+  // },
+  // {
+  //   id: 103,
+  //   title: "Toy Story 5",
+  //   image:
+  //     "https://image.tmdb.org/t/p/w500/4rQ5L0mZ3X2V1N8B7C6D9E0F5G.jpg",
+  //   rating: 0,
+  //   genre: "Animation",
+  //   year: 2026,
+  //   language: "English",
+  //   type: "upcoming",
+  // },
+  // {
+  //   id: 104,
+  //   title: "The Batman Part II",
+  //   image:
+  //     "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+  //   rating: 0,
+  //   genre: "Action",
+  //   year: 2027,
+  //   language: "English",
+  //   type: "upcoming",
+  // },
+  // {
+  //   id: 105,
+  //   title: "Avatar 4",
+  //   image:
+  //     "https://image.tmdb.org/t/p/w500/6b8jW7mQ9X5L3K2P1N4R8T0V6Y.jpg",
+  //   rating: 0,
+  //   genre: "Adventure",
+  //   year: 2029,
+  //   language: "English",
+  //   type: "upcoming",
+  // },
 ];
 
 const seedDatabase = async () => {

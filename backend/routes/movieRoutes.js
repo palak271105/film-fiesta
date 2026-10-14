@@ -1,13 +1,17 @@
+
 import express from "express";
 import Movie from "../models/Movie.js";
+import {
+  protect,
+  authorize,
+} from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// GET all movies
+// GET all movies - Public access
 router.get("/", async (req, res) => {
   try {
     const movies = await Movie.find();
-
     res.status(200).json(movies);
   } catch (error) {
     res.status(500).json({
@@ -17,7 +21,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET movie by ID
+// GET movie by ID - Public access
 router.get("/:id", async (req, res) => {
   try {
     const movie = await Movie.findOne({
@@ -39,11 +43,10 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// POST new movie
-router.post("/", async (req, res) => {
+// POST new movie - Admin only
+router.post("/", protect, authorize("admin"), async (req, res) => {
   try {
     const movie = await Movie.create(req.body);
-
     res.status(201).json(movie);
   } catch (error) {
     res.status(400).json({
@@ -53,18 +56,13 @@ router.post("/", async (req, res) => {
   }
 });
 
-// PUT update movie
-router.put("/:id", async (req, res) => {
+// PUT update movie - Admin only
+router.put("/:id", protect, authorize("admin"), async (req, res) => {
   try {
     const movie = await Movie.findOneAndUpdate(
-      {
-        id: Number(req.params.id),
-      },
+      { id: Number(req.params.id) },
       req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
+      { new: true, runValidators: true }
     );
 
     if (!movie) {
@@ -82,8 +80,8 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// DELETE movie
-router.delete("/:id", async (req, res) => {
+// DELETE movie - Admin only
+router.delete("/:id", protect, authorize("admin"), async (req, res) => {
   try {
     const movie = await Movie.findOneAndDelete({
       id: Number(req.params.id),
