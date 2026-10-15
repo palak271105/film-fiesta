@@ -1,3 +1,4 @@
+
 import {
   createContext,
   useCallback,
@@ -29,24 +30,33 @@ export function MovieProvider({ children }) {
     const fetchMovies = async () => {
       try {
         setLoading(true);
+        setError("");
 
-        const API_URL = import.meta.env.VITE_API_URL;
+        const API_URL = (
+          import.meta.env.VITE_API_URL ||
+          "http://localhost:5000"
+        ).replace(/\/+$/, "");
 
-const response = await fetch(
-  `${API_URL}/api/movies`
-);
+        const response = await fetch(
+          `${API_URL}/api/movies`
+        );
 
         if (!response.ok) {
-          throw new Error("Failed to fetch movies");
+          throw new Error(
+            `Failed to fetch movies (${response.status})`
+          );
         }
 
         const data = await response.json();
 
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid movies API response");
+        }
+
         setMovies(data);
-        setError("");
       } catch (error) {
         console.error("Error fetching movies:", error);
-        setError("Unable to load movies");
+        setError("Unable to load movies. Please try again.");
       } finally {
         setLoading(false);
       }
@@ -57,13 +67,17 @@ const response = await fetch(
 
   // Favorites
   const [favorites, setFavorites] = useState(() => {
-    const savedFavorites = localStorage.getItem(
-      "filmfiesta-favorites"
-    );
+    try {
+      const savedFavorites = localStorage.getItem(
+        "filmfiesta-favorites"
+      );
 
-    return savedFavorites
-      ? JSON.parse(savedFavorites)
-      : [];
+      return savedFavorites
+        ? JSON.parse(savedFavorites)
+        : [];
+    } catch {
+      return [];
+    }
   });
 
   // Search
